@@ -132,7 +132,6 @@ const createPlants = {
         };
         this.addArrowSlider();
         server.update(arrPlants);
-
         for (let x = 0; x < arrPlants.length; x++) {
             let box = new BoxPlant(arrPlants[x].img, arrPlants[x].id);
             box.createBox();
@@ -197,15 +196,15 @@ class BoxPlant {
             label.innerHTML += '<p class="w-75 m-0">הוספת תמונה</p><i class="fas fa-cloud-upload-alt w-25"></i>'
             box.appendChild(label);
 
-            let close = document.createElement('div');   
+            let close = document.createElement('div');
             close.className = 'delete-edit-plants center-all';
             close.innerHTML = 'x';
-            close.onclick = ()=>{
-                let index = arrPlants.length - 1; 
-                arrPlants.splice(index,1);
+            close.onclick = () => {
+                let index = arrPlants.length - 1;
+                arrPlants.splice(index, 1);
                 createPlants.renderElements();
             }
-            editPlants.appendChild(close);                 
+            editPlants.appendChild(close);
             editPlants.appendChild(box);
         } else {
             let img = document.createElement('img');
@@ -221,11 +220,44 @@ class BoxPlant {
                 editPlant.openMenu(id);
             };
             box.setAttribute("draggable", "true");
+            box.ondragstart = (e) => {
+                let id = e.target.id;
+                dragAndDrop.findIdElementDrag(id)
+            }
+            box.ondragover = (e) => {
+                let id = e.target.parentElement.id;
+                dragAndDrop.findIdElementDrop(id)
+            }
+            box.ondrop = () => {
+                dragAndDrop.finishDrag()
+            }
             box.style.backgroundImage = 'none';
             box.style.opacity = 1;
             box.appendChild(hamburgerPlant);
             myPlants.appendChild(box);
         }
+    }
+}
+
+const dragAndDrop = {
+    indexDrag: "",
+    indexDrop: "",
+    elementDrag: "",
+    findIdElementDrag(id) {
+        this.indexDrag = arrPlants.findIndex((value) => {
+            return value.id == id;
+        })
+    },
+    findIdElementDrop(id) {
+        this.indexDrop = arrPlants.findIndex((value) => {
+            return value.id == id;
+        })
+    },
+    finishDrag() {
+        this.elementDrag = arrPlants[this.indexDrag];
+        arrPlants.splice(this.indexDrag, 1);
+        arrPlants.splice(this.indexDrop, 0, this.elementDrag);
+        createPlants.renderElements();
     }
 }
 
