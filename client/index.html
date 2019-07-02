@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="he">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>גינה-לי</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <script src="compressor/compressor.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script> -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+    <div id="container" class="container">
+        <div class="row desktop center-all bg-dark text-white massege">
+            <div class="col-12">
+                <p class="m-0 text-center">לצורך חווית משתמש טובה מומלץ להשתמש בסמארטפון..</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="icon d-flex justify-content-start align-items-center p-2">
+                        <img src="img/asset1.png" alt="">
+                        <p>גינה-לי</p>
+                    </div>
+                    <div class="menu d-flex justify-content-end align-items-center position-relative">
+                        <div id="hamburger" class="hamburger">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <div id="menuOpen" class="menu-open p-2">
+                            <p id="signout" class="w-100 text-center h5 m-0">התנתקות</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="hello-usermame col center-all">
+                <!-- <div class="wrap-gardener"> -->
+                <img class="w-25 rounded-circle p-2" src="img/male.png" alt="">
+                <!-- </div> -->
+                <p class="text-right h4">שלום <span id="userName"></span> הגנן!</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center">
+                <div id="buttAddPlant" class="butt-add-plant">הוסף צמח</div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-7">
+                <div id="editPlants" class="d-flex justify-content-center align-items-center flex-wrap m-2 edit-plants">
+                </div>
+            </div>
+        </div>
+        <div id="heightToBottom" class="row center-all">
+            <div class="col-12 ">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="wrap-my-tasks">
+                            <div class="center-all title-my-tasks bacg-transp">
+                                <h5>המשימות שלי להיום</h5>
+                                <img src="img/calendar.png" alt="">
+                            </div>
+                            <div id="myTasks" class="my-Tasks w-100 d-flex justify-content-center flex-wrap">
+                                <div class="type-Task">
+                                    <p class="m-0">השקייה</p>
+                                    <div id="tasksWatering" class="w-100 text-center">
+                                    </div>
+                                </div>
+                                <div class="type-Task">
+                                    <p class="m-0">גיזום</p>
+                                    <div id="tasksPruning" class="w-100 text-center">
+
+                                    </div>
+                                </div>
+                                <div class="type-Task">
+                                    <p class="m-0">דישון</p>
+                                    <div id="tasksElk" class="w-100 text-center">
+
+                                    </div>
+                                </div>
+
+                                <div class="type-Task">
+                                    <p class="m-0">תזכורת</p>
+                                    <div id="tasksTask" class="w-100 text-center">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <div class="wrap-my-plants">
+                            <div class="center-all title-my-plants bacg-transp">
+                                <p>הצמחים שלי</p>
+                                <img src="img/plant.png" alt="">
+                            </div>
+                            <div id="arrowL" class="arrow">&#9664;</div>
+                            <div id="arrowR" class="arrow">&#9654;</div>
+                            <div class="scroll-my-plants">
+                                <div id="myPlants"
+                                    class="my-plants flex-row-reverse d-flex justify-content-center align-items-center m-2">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col bg-dark text-white">
+                <p class="w-100 text-center m-1">ליצירת קשר - <a href="mailto:dvirleviapp@gmail.com">לחץ כאן!</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+    <!--  Modal edit-->
+    <div id="displayModal" class="displayModal">
+        <div class="modal-m">
+
+            <!-- Modal content -->
+            <div class="modal-content-m">
+                <div id="modalBodyM" class="modal-body-m">
+
+                    <div class="d-flex flex-wrap align-items-center justify-content-around w-100">
+                        <p class="w-100 text-center h2 text-white font-weight-bold">עריכת צמח</p>
+
+                        <div class="box-icon-select mt-5">
+                            <img src="img/watering-can.png" alt="">
+                            <h2>השקייה</h2>
+                            <div id="days" class="days">
+                                <div class="dey-scroll">
+                                    <div id="deySelect" class="dey-select">בחר יום</div>
+                                </div><span>▼</span>
+                            </div>
+                            <div id="selectDay" class="select-day">
+                            </div>
+                        </div>
+
+                        <div class="box-icon-select mt-0">
+                            <img src="img/scissors.png" alt="">
+                            <h2>גיזום</h2>
+                            <input id="inputPruning" placeholder="בחר תאריך" type="text" onblur="(this.type='text')"
+                                onfocus="(this.type='date')">
+                        </div>
+
+                        <div class="box-icon-select mt-0">
+                            <img src="img/bucket.png" alt="">
+                            <h2>דישון</h2>
+                            <input id="inputElk" placeholder="בחר תאריך" type="text" onblur="(this.type='text')"
+                                onfocus="(this.type='date')">
+                        </div>
+
+
+                        <div class="box-icon-select mt-5">
+                            <img src="img/sprout.png" alt="">
+                            <h2>תזכורת</h2>
+                            <input id="inputReminder" maxlength="7" placeholder="תזכורת" type="text">
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-center w-100">
+                        <div id="boxPlant" class="boxPlant">
+                            <!-- <img src="${src}"> -->
+                        </div>
+                    </div>
+                    <div class="w-100 center-all">
+                        <div class="bg-success w-50 p-1 text-center h4 rounded-pill text-white mt-4" id="buttSave">
+                            סיימתי
+                        </div>
+                    </div>
+                    <div class="w-100 center-all">
+                        <div class="p-1 pr-4 pl-4 text-center h6 rounded-pill text-white mt-5 bg-danger"
+                            id="buttDelete">
+                            מחיקת צמח
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal registar -->
+    <div id="displayModalRgistar" class="display-modal-registar">
+        <div class="modal-registar">
+            <!-- Modal content -->
+            <div class="modal-content-registar center-all">
+                <div class="w-100">
+                    <div class="icon d-flex justify-content-center align-items-center p-2">
+                        <img src="img/asset1.png" alt="">
+                        <p>גינה-לי</p>
+                    </div>
+                </div>
+                <div class="w-100">
+                    <p class="w-100 text-center h5">האפליקציה שתעשה לך סדר בגינה!</p>
+                    <p class="w-100 text-center h6">הרשמה קלה ומהירה.</p>
+                </div>
+                <div id="displayRegistar" class="display-registar">
+                    <p class="w-100 text-center h3 font-weight-bold">הרשמה:</p>
+                    <form id="sentRegistar">
+                        <div class="w-100 center-all">
+                            <input id="userNameRgistar" type="text" maxlength="7" placeholder="שם משתמש" required>
+                        </div>
+                        <div class="w-100 center-all mt-1">
+                            <input id="passwordRgistar" type="password" minlength="6" placeholder="ססמה" required>
+                        </div>
+                        <div class="w-100 center-all mt-1">
+                            <input id="passwordAgainRgistar" minlength="6" type="password" placeholder="אישור ססמה"
+                                required>
+                        </div>
+                        <div class="w-100 center-all mt-1">
+                            <button type="submit">שלח</button>
+                        </div>
+                    </form>
+                </div>
+                <div id="displayConnect" class="display-connect">
+                    <p class="w-100 text-center h3 font-weight-bold">התחברות:</p>
+                    <form id="sentConnect">
+                        <div class="w-100 center-all">
+                            <input id="userNameConnect" type="text" maxlength="7" placeholder="שם משתמש" required>
+                        </div>
+                        <div class="w-100 center-all mt-1">
+                            <input id="passwordConnect" type="password" minlength="6" placeholder="ססמה" required>
+                        </div>
+                        <div class="w-100 center-all mt-1">
+                            <button type="submit">שלח</button>
+                        </div>
+                    </form>
+                </div>
+                <p id="ifRegistar" class="w-100 center-all mt-1">
+                    כבר רשום? לחץ כאן!
+                </p>
+            </div>
+        </div>
+    </div>
+    <script src="dragdroptouch-master/DragDropTouch.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
