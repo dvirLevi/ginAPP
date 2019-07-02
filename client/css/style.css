@@ -282,6 +282,10 @@ input[type="file"] {
     min-height: 105px;
 }
 
+.contact p{
+    font-size: 11px;
+}
+
 /* .boxPlant input::placeholder {
     color: rgb(73, 73, 73);
     font-weight: bold;
