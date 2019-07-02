@@ -209,6 +209,7 @@ class BoxPlant {
         } else {
             let img = document.createElement('img');
             img.src = this.img;
+            img.setAttribute("draggable", "false");
             box.appendChild(img);
             let hamburgerPlant = document.createElement('div');
             hamburgerPlant.className = "hamburger-plant";
@@ -225,10 +226,12 @@ class BoxPlant {
                 dragAndDrop.findIdElementDrag(id)
             }
             box.ondragover = (e) => {
+                e.preventDefault()
                 let id = e.target.parentElement.id;
                 dragAndDrop.findIdElementDrop(id)
             }
-            box.ondrop = () => {
+            box.ondrop = (e) => {
+                e.preventDefault()
                 dragAndDrop.finishDrag()
             }
             box.style.backgroundImage = 'none';
