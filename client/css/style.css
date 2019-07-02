@@ -214,7 +214,7 @@ input[type="file"] {
 
 .type-Task {
     flex: 1;
-    border-left: solid #ffb88f 1px;
+    border-left: solid #ffffff 1px;
 }
 
 .type-Task:nth-child(4) {
