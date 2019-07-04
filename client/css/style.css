@@ -136,7 +136,7 @@ a {
     justify-content: center;
     overflow: hidden;
     position: sticky;
-    box-shadow: 0 0 8px 0px #000000cf;
+    box-shadow: 0 0 8px 0px #717171cf;
 }
 
 input[type="file"] {

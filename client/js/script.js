@@ -228,7 +228,7 @@ class BoxPlant {
             box.ondragover = (e) => {
                 e.preventDefault()
                 if(e.target.tagName == "IMG"){
-                e.target.parentElement.style.boxShadow = "0 0 14px 4px #080404cf";
+                e.target.parentElement.style.boxShadow = "0 0 19px 0px #717171cf";
                 e.target.parentElement.style.width = '115px';
                 e.target.parentElement.style.height = '115px';
             }
@@ -238,7 +238,7 @@ class BoxPlant {
             box.ondragleave = (e) => {
                 e.preventDefault()
                 if(e.target.tagName == "IMG"){
-                e.target.parentElement.style.boxShadow = "0 0 8px 0px #000000cf";
+                e.target.parentElement.style.boxShadow = "0 0 8px 0px #717171cf";
                 e.target.parentElement.style.width = '110px';
                 e.target.parentElement.style.height = '110px';
                 }
