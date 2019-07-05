@@ -9,6 +9,51 @@
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     <script src="compressor/compressor.min.js"></script>
+
+
+    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase-messaging.js"></script>
+    <script>
+        firebase.initializeApp({
+            'messagingSenderId': '249373448912'
+        })
+        const messaging = firebase.messaging();
+        function initFirebaseMessagingRegistration() {
+            messaging
+                .requestPermission()
+                .then(function () {
+                    messageElement.innerHTML = "Got notification permission";
+                    console.log("Got notification permission");
+                    return messaging.getToken();
+                })
+                .then(function (token) {
+                    // print the token on the HTML page
+                    tokenElement.innerHTML = "Token is " + token;
+                })
+                .catch(function (err) {
+                    errorElement.innerHTML = "Error: " + err;
+                    console.log("Didn't get notification permission", err);
+                });
+        }
+        messaging.onMessage(function (payload) {
+            console.log("Message received. ", JSON.stringify(payload));
+            notificationElement.innerHTML = notificationElement.innerHTML + " " + payload.data.notification;
+        });
+        messaging.onTokenRefresh(function () {
+            messaging.getToken()
+                .then(function (refreshedToken) {
+                    console.log('Token refreshed.');
+                    tokenElement.innerHTML = "Token is " + refreshedToken;
+                }).catch(function (err) {
+                    errorElement.innerHTML = "Error: " + err;
+                    console.log('Unable to retrieve refreshed token ', err);
+                });
+        });
+        
+    </script>
+
+
+
     <link rel="stylesheet" href="css/bootstrap.min.css">
     
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
