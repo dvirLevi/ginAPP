@@ -28,8 +28,6 @@ app.use('/', express.static('client'))
 
 let collection;
 async function connectDB() {
-// const url = 'mongodb://localhost:27017';
-// const url = 'mongodb+srv://dvir:0545993678@cluster0-o28xz.mongodb.net/test?retryWrites=true&w=majority';
 const url = process.env.NONGO_URI || 'mongodb://localhost:27017';
 const connection = await mongo.connect(url);
 const db = connection.db('ginAppDB');
@@ -58,12 +56,12 @@ app.post('/app/conect', async (req, res) => {
 })
 
 
-cron.schedule("55 21 * * *", function() {
+cron.schedule("10 1 * * *", function() {
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
           user: 'dlibi312@gmail.com',
-          pass: 'dlibi312312'
+          pass: process.env.PASS
         }
       });
       
