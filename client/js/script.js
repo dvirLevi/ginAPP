@@ -595,8 +595,8 @@ const registar = {
 
 
 const server = {
-    url: 'http://localhost:8000/app/',
-    // url: 'https://gin-apps.herokuapp.com/app/',
+    // url: 'http://localhost:8000/app/',
+    url: 'https://gin-apps.herokuapp.com/app/',
     userId() {
         if (localStorage.getItem("userNameGinApp")) {
             return JSON.parse(localStorage.getItem("userNameGinApp")).userId;
