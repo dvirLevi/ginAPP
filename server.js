@@ -58,12 +58,12 @@ app.post('/app/conect', async (req, res) => {
 })
 
 
-cron.schedule("20 00 * * *", function() {
+cron.schedule("55 21 * * *", function() {
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
           user: 'dlibi312@gmail.com',
-          pass: '***'
+          pass: 'dlibi312312'
         }
       });
       
@@ -89,7 +89,7 @@ cron.schedule("20 00 * * *", function() {
 //         service: 'gmail',
 //         auth: {
 //           user: 'dlibi312@gmail.com',
-//           pass: '***'
+//           pass: 'dlibi312312'
 //         }
 //       });
       
