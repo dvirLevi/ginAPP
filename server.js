@@ -58,7 +58,33 @@ app.post('/app/conect', async (req, res) => {
 })
 
 
-cron.schedule("53 23 * * *", function() {
+// cron.schedule("53 23 * * *", function() {
+//     var transporter = nodemailer.createTransport({
+//         service: 'gmail',
+//         auth: {
+//           user: 'dlibi312@gmail.com',
+//           pass: 'dlibi312312'
+//         }
+//       });
+      
+//       var mailOptions = {
+//         from: 'dlibi312@gmail.com',
+//         to: 'dvirlevi2@gmail.com',
+//         subject: 'Sending Email using Node.js',
+//         text: 'That was easy!'
+//       };
+      
+//       transporter.sendMail(mailOptions, function(error, info){
+//         if (error) {
+//           console.log(error);
+//         } else {
+//           console.log('Email sent: ' + info.response);
+//         }
+//       });
+//   });
+
+  function dendmail(){
+  setInterval(()=>{
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
@@ -81,8 +107,10 @@ cron.schedule("53 23 * * *", function() {
           console.log('Email sent: ' + info.response);
         }
       });
-  });
 
+  }, 60000 * 3);
+}
+dendmail()
 
 app.get('/app/:id', async (req, res) => {
     res.send(await collection.findOne({userId: req.params.id}))
