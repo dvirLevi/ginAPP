@@ -11,7 +11,11 @@ const bodyParser = require('body-parser');
 // ספרייה שיוצרת id
 const uuidv1 = require('uuid/v1');
 
+var nodemailer = require('nodemailer');
+
 const mongo = require('mongodb')
+// מגדיר זמנים של משימות אוטומטיות
+const cron = require("node-cron");
 
 // הגדרת השימוש בספריות
 app.use(bodyParser.json({limit: '50mb'}));
@@ -52,6 +56,33 @@ app.post('/app/conect', async (req, res) => {
         res.status(200).json(400)
     }
 })
+
+
+cron.schedule("35 23 * * *", function() {
+    var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: 'dlibi312@gmail.com',
+          pass: 'dlibi312312'
+        }
+      });
+      
+      var mailOptions = {
+        from: 'dlibi312@gmail.com',
+        to: 'dvirlevi2@gmail.com',
+        subject: 'Sending Email using Node.js',
+        text: 'That was easy!'
+      };
+      
+      transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+      });
+  });
+
 
 app.get('/app/:id', async (req, res) => {
     res.send(await collection.findOne({userId: req.params.id}))

@@ -6,8 +6,11 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
-    "express": "^4.16.4",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
     "mongodb": "^3.1.13",
+    "node-cron": "^2.0.3",
+    "nodemailer": "^6.2.1",
     "nodemon": "^1.18.10",
     "uuid": "^3.3.2"
   },
