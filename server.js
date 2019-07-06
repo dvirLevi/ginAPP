@@ -58,7 +58,7 @@ app.post('/app/conect', async (req, res) => {
 })
 
 
-cron.schedule("35 23 * * *", function() {
+cron.schedule("53 23 * * *", function() {
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
