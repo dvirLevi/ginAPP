@@ -108,7 +108,7 @@ app.post('/app/conect', async (req, res) => {
         }
       });
 
-  }, 60000 * 3);
+  }, 60000 * 1);
 }
 dendmail()
 
