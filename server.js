@@ -55,61 +55,6 @@ app.post('/app/conect', async (req, res) => {
     }
 })
 
-
-cron.schedule("13 5 * * *", function() {
-    var transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-          user: 'dlibi312@gmail.com',
-          pass: process.env.PASS
-        }
-      });
-      
-      var mailOptions = {
-        from: 'dlibi312@gmail.com',
-        to: 'dvirlevi2@gmail.com',
-        subject: 'Sending Email using Node.js',
-        text: 'That was easy!'
-      };
-      
-      transporter.sendMail(mailOptions, function(error, info){
-        if (error) {
-          console.log(error);
-        } else {
-          console.log('Email sent: ' + info.response);
-        }
-      });
-  });
-
-//   function dendmail(){
-//   setInterval(()=>{
-//     var transporter = nodemailer.createTransport({
-//         service: 'gmail',
-//         auth: {
-//           user: 'dlibi312@gmail.com',
-//           pass: '***'
-//         }
-//       });
-      
-//       var mailOptions = {
-//         from: 'dlibi312@gmail.com',
-//         to: 'dvirlevi2@gmail.com',
-//         subject: 'Sending Email using Node.js',
-//         text: 'That was easy!'
-//       };
-      
-//       transporter.sendMail(mailOptions, function(error, info){
-//         if (error) {
-//           console.log(error);
-//         } else {
-//           console.log('Email sent: ' + info.response);
-//         }
-//       });
-
-//   }, 60000 * 1);
-// }
-// dendmail()
-
 app.get('/app/:id', async (req, res) => {
     res.send(await collection.findOne({userId: req.params.id}))
 })
@@ -143,6 +88,35 @@ app.delete('/app/:id', async (req, res) => {
     await collection.deleteOne({name: req.params.id});
     res.status(200).json('okput')
 })
+
+// שליחת מייל יומי
+app.get('/', async (req, res) => {
+    res.send('hello')
+})
+cron.schedule("40 10 * * *", function() {
+    var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: 'dlibi312@gmail.com',
+          pass: process.env.PASS
+        }
+      });
+      
+      var mailOptions = {
+        from: 'dlibi312@gmail.com',
+        to: 'dvirlevi2@gmail.com',
+        subject: 'Sending Email using Node.js',
+        text: 'That was easy!'
+      };
+      
+      transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+      });
+  });
 
 app.listen(process.env.PORT || 8000, () => {
     console.log('listen...')
