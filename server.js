@@ -93,7 +93,7 @@ app.delete('/app/:id', async (req, res) => {
 app.get('/', async (req, res) => {
     res.send('hello')
 })
-cron.schedule("40 10 * * *", function() {
+cron.schedule("40 11 * * *", function() {
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
