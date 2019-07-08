@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="img/asset1.png">
     <title>גינה-לי</title>
-
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     <script src="compressor/compressor.min.js"></script>
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
@@ -122,7 +122,8 @@
         </div>
         <div class="row">
             <div class="col bg-dark text-white contact">
-                <p class="w-100 text-center m-1">נבנה ופותח בAppsLife ליצירת קשר - <a href="mailto:dvirleviapp@gmail.com">לחץ כאן!</a>
+                <p class="w-100 text-center m-1">נבנה ופותח בAppsLife ליצירת קשר - <a
+                        href="mailto:dvirleviapp@gmail.com">לחץ כאן!</a>
                 </p>
             </div>
         </div>
@@ -178,11 +179,22 @@
                             <!-- <img src="${src}"> -->
                         </div>
                     </div>
+                    <div class="w-100 center-all notification">
+                        <div id="ifSendMail" class="wrap-selection center-all rounded-circle">
+                            <div id="selectionSendMail" class="selection rounded-circle">
+
+                            </div>
+                        </div>
+                        <h6 class="" id="">
+                            אני רוצה לקבל תזכורת למייל על משימות
+                        </h6>
+                    </div>
                     <div class="w-100 center-all">
-                        <div class="bg-success w-50 p-1 text-center h4 rounded-pill text-white mt-4" id="buttSave">
+                        <div class="bg-success w-50 p-1 text-center h4 rounded-pill text-white mt-2" id="buttSave">
                             סיימתי
                         </div>
                     </div>
+                   
                     <div class="w-100 center-all">
                         <div class="p-1 pr-4 pl-4 text-center h6 rounded-pill text-white mt-5 bg-danger"
                             id="buttDelete">
@@ -218,7 +230,15 @@
                             <input id="passwordRgistar" type="password" minlength="6" placeholder="ססמה" required>
                         </div>
                         <div class="w-100 center-all mt-1">
-                            <input id="passwordAgainRgistar" minlength="6" type="password" placeholder="אישור ססמה"
+                            <input id="passwordAgainRgistar" minlength="6" type="password" placeholder="אימות ססמה"
+                                required>
+                        </div>
+                        <div class="w-100 center-all mt-1">
+                            <input id="emailRgistar" type="email" placeholder="מייל"
+                                required>
+                        </div>
+                        <div class="w-100 center-all mt-1">
+                            <input id="emailAgainRgistar" type="email" placeholder="אימות מייל"
                                 required>
                         </div>
                         <div class="w-100 center-all mt-1">

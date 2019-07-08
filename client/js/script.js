@@ -15,6 +15,8 @@ const buttDelete = document.getElementById('buttDelete');
 const userNameRgistar = document.getElementById('userNameRgistar');
 const passwordAgainRgistar = document.getElementById('passwordAgainRgistar');
 const passwordRgistar = document.getElementById('passwordRgistar');
+const emailRgistar = document.getElementById('emailRgistar');
+const emailAgainRgistar = document.getElementById('emailAgainRgistar');
 const sentRegistar = document.getElementById('sentRegistar');
 const sentConnect = document.getElementById('sentConnect');
 const displayModalRgistar = document.getElementById('displayModalRgistar');
@@ -33,7 +35,8 @@ const signout = document.getElementById('signout');
 const userName = document.getElementById('userName');
 const arrowL = document.getElementById('arrowL');
 const arrowR = document.getElementById('arrowR');
-
+const ifSendMail = document.getElementById('ifSendMail');
+const selectionSendMail = document.getElementById('selectionSendMail');
 
 
 
@@ -58,6 +61,7 @@ const findHigeNamber = (arr) => {
 
 let arrPlants;
 let allId;
+let user;
 
 const menu = {
     initalMenu() {
@@ -227,20 +231,20 @@ class BoxPlant {
             }
             box.ondragover = (e) => {
                 e.preventDefault()
-                if(e.target.tagName == "IMG"){
-                e.target.parentElement.style.boxShadow = "0 0 19px 0px #717171cf";
-                e.target.parentElement.style.width = '115px';
-                e.target.parentElement.style.height = '115px';
-            }
+                if (e.target.tagName == "IMG") {
+                    e.target.parentElement.style.boxShadow = "0 0 19px 0px #717171cf";
+                    e.target.parentElement.style.width = '115px';
+                    e.target.parentElement.style.height = '115px';
+                }
                 let id = e.target.parentElement.id;
                 dragAndDrop.findIdElementDrop(id)
             }
             box.ondragleave = (e) => {
                 e.preventDefault()
-                if(e.target.tagName == "IMG"){
-                e.target.parentElement.style.boxShadow = "0 0 8px 0px #717171cf";
-                e.target.parentElement.style.width = '110px';
-                e.target.parentElement.style.height = '110px';
+                if (e.target.tagName == "IMG") {
+                    e.target.parentElement.style.boxShadow = "0 0 8px 0px #717171cf";
+                    e.target.parentElement.style.width = '110px';
+                    e.target.parentElement.style.height = '110px';
                 }
             }
             box.ondrop = (e) => {
@@ -287,7 +291,7 @@ const editPlant = {
         });
         let src = this.pointerEditPlant[0].img;
         boxPlant.innerHTML = `<img src="${src}">
-                              <input id="namePlant" placeholder="שם צמח" >`;
+                              <input id="namePlant" placeholder="שם צמח">`;
         boxPlant.style.backgroundImage = 'none';
         this.insertIfHaveData();
         displayModal.style.display = 'block';
@@ -304,6 +308,22 @@ const editPlant = {
         buttDelete.onclick = () => {
             this.deletePlant(id)
         };
+        ifSendMail.onclick = () => {
+            if (selectionSendMail.style.display == 'none') {
+                server.update({
+                    to: "ifEmail",
+                    ifMailNot: true
+                });
+                user.ifMailNot = true;
+            } else {
+                server.update({
+                    to: "ifEmail",
+                    ifMailNot: false
+                });
+                user.ifMailNot = false;
+            }
+            openAndCloseMenu(selectionSendMail);
+        }
 
     },
     insertIfHaveData() {
@@ -322,6 +342,11 @@ const editPlant = {
         if (this.pointerEditPlant[0].reminder != "") {
             inputReminder.value = this.pointerEditPlant[0].reminder;
         };
+        if (user.ifMailNot) {
+            selectionSendMail.style.display = 'block'
+        } else {
+            selectionSendMail.style.display = 'none'
+        }
     },
     arrMenu: [{
             text: "ראשון",
@@ -505,7 +530,9 @@ const tasks = {
 const registar = {
     user: {
         userName: null,
-        password: null
+        password: null,
+        email: null,
+        ifMailNot: false
     },
     addEvent() {
         sentRegistar.onsubmit = () => {
@@ -532,15 +559,16 @@ const registar = {
         }
     },
     sendData() {
-        if (passwordAgainRgistar.value == passwordRgistar.value) {
+        if (passwordAgainRgistar.value == passwordRgistar.value && emailAgainRgistar.value == emailRgistar.value) {
             this.user.userName = userNameRgistar.value;
             this.user.password = passwordRgistar.value;
+            this.user.email = emailRgistar.value;
             server.insert(this.user);
         } else {
             Swal.fire({
                 type: 'error',
                 title: 'אופס...',
-                text: 'הססמאות אינן תואמות',
+                text: 'הססמאות או המייל אינם תואמים',
                 timer: 1500
             })
         }
@@ -638,7 +666,7 @@ const server = {
         console.log(this.url + id)
         const response = await fetch(this.url + id);
         const json = await response.json();
-        return json.arrPlant;
+        return json;
     },
     async conect(obj) {
         const objtojson = JSON.stringify(obj);
@@ -654,13 +682,17 @@ const server = {
     }
 }
 
+
+
 const mainData = {
     get userName() {
         return JSON.parse(localStorage.getItem("userNameGinApp")).userName;
     },
     async inital() {
         if (localStorage.getItem("userNameGinApp")) {
-            arrPlants = await server.get();
+            user = await server.get();
+            arrPlants = user.arrPlant;
+            console.log(arrPlants)
             tasks.renderTasksToTable();
             userName.innerHTML = this.userName;
             if (await arrPlants.length) {

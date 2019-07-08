@@ -61,14 +61,14 @@ app.get('/app/:id', async (req, res) => {
 
 // מקבל מידע מהקליינט
 app.post('/app', async (req, res) => {
-    const {userName, password} = req.body;
+    const {userName, password, email, ifMailNot} = req.body;
     const userId = uuidv1();
     const arrPlant = [];
     const ifAlreadyName = await collection.findOne({userName: userName});
     if (ifAlreadyName){
         res.status(200).json(400)
     }else{
-        await collection.insertOne({userName, password, userId, arrPlant});
+        await collection.insertOne({userName, password, email, ifMailNot, userId, arrPlant});
         const obj = {
             userName: userName,
             userId: userId,
@@ -80,7 +80,11 @@ app.post('/app', async (req, res) => {
 // מעדכן מידע ספציפי
 app.put('/app/:id', async (req, res) => {
     const arr = req.body;
-    await collection.updateOne({userId: req.params.id}, {$set: {arrPlant: arr}});
+    if(arr.to == "ifEmail"){
+        await collection.updateOne({userId: req.params.id}, {$set: {ifMailNot: arr.ifMailNot}});
+    }else{
+        await collection.updateOne({userId: req.params.id}, {$set: {arrPlant: arr}});
+    }
     res.status(200).json('okput')
 })
 
@@ -93,30 +97,78 @@ app.delete('/app/:id', async (req, res) => {
 app.get('/', async (req, res) => {
     res.send('hello')
 })
-cron.schedule("40 11 * * *", function() {
-    var transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-          user: 'dlibi312@gmail.com',
-          pass: process.env.PASS
+
+const sendMail = {
+       listEmails: [],
+   get formatDate(){
+        var d = new Date(),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+
+        if (month.length < 2) month = '0' + month;
+        if (day.length < 2) day = '0' + day;
+
+        return [year, month, day].join('-');
+    },
+    get day() {
+        return new Date().getDay() + 1;
+    },
+    async findUsersDalyMile(){
+        let arrUsersSendMail = await collection.find({ifMailNot: true}).toArray();
+        for(let x in arrUsersSendMail){
+             for(let y in arrUsersSendMail[x].arrPlant){
+                if(arrUsersSendMail[x].arrPlant[y].elk == this.formatDate || arrUsersSendMail[x].arrPlant[y].pruning == this.formatDate){
+                   this.listEmails.push(arrUsersSendMail[x].email);
+                   break;
+                }
+                for(let z in arrUsersSendMail[x].arrPlant[y].days){
+                    if(arrUsersSendMail[x].arrPlant[y].days[z] == this.day){
+                        this.listEmails.push(arrUsersSendMail[x].email);
+                    }
+                }
+             }
         }
-      });
-      
-      var mailOptions = {
-        from: 'dlibi312@gmail.com',
-        to: 'dvirlevi2@gmail.com',
-        subject: 'Sending Email using Node.js',
-        text: 'That was easy!'
-      };
-      
-      transporter.sendMail(mailOptions, function(error, info){
-        if (error) {
-          console.log(error);
-        } else {
-          console.log('Email sent: ' + info.response);
+        this.sendMail();
+    },
+    sendMail(){
+        var transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+              user: 'dlibi312@gmail.com',
+              pass: process.env.PASS
+            }
+          });
+         for(let x in this.listEmails){ 
+          var mailOptions = {
+            from: 'dlibi312@gmail.com',
+            to: this.listEmails[x],
+            subject: 'תזכורת למשימה שיש לך לעשות בגינה!',
+            text: 'לצפייה במשימה פתח את האפליקצייה - https://gin-apps.herokuapp.com/'
+          };
+          
+          transporter.sendMail(mailOptions, function(error, info){
+            if (error) {
+              console.log(error);
+            } else {
+              console.log('Email sent: ' + info.response);
+            }
+          });
         }
-      });
+
+    }
+
+}
+cron.schedule("30 4 * * *", async ()=> {
+    sendMail.findUsersDalyMile()
   });
+
+
+
+
+
+
+
 
 app.listen(process.env.PORT || 8000, () => {
     console.log('listen...')
