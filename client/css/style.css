@@ -52,6 +52,7 @@ a {
     width: 33%;
 }
 
+
 .menu-open {
     display: none;
     position: absolute;
@@ -534,6 +535,12 @@ input[type="file"] {
 .display-connect {
     display: none;
 }
+
+.add-button {
+    position: absolute;
+    top: 1px;
+    left: 1px;
+  }
 
 @media (max-width: 767.98px) {
 
