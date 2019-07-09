@@ -11,5 +11,5 @@
   ],
   "name": "gin app",
   "short_name": "גינה-לי",
-  "start_url": "client/index.html"
+  "start_url": "/client/index.html"
 }
