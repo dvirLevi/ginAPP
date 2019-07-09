@@ -6,6 +6,7 @@ self.addEventListener('install', function(e) {
        'index.html',
        'js/script.js',
        'css/style.css',
+       'css/bootstrap.min.css',
        'img/asset1.png',
       //  '/pwa-examples/a2hs/images/fox2.jpg',
       //  '/pwa-examples/a2hs/images/fox3.jpg',
