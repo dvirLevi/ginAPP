@@ -13,7 +13,7 @@
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-        <link rel="manifest" href="manifest.webmanifest">
+    <link rel="manifest" href="manifest.webmanifest">
     <link rel="stylesheet" href="css/style.css">
 
 </head>
@@ -195,7 +195,7 @@
                             סיימתי
                         </div>
                     </div>
-                   
+
                     <div class="w-100 center-all">
                         <div class="p-1 pr-4 pl-4 text-center h6 rounded-pill text-white mt-5 bg-danger"
                             id="buttDelete">
@@ -235,12 +235,10 @@
                                 required>
                         </div>
                         <div class="w-100 center-all mt-1">
-                            <input id="emailRgistar" type="email" placeholder="מייל"
-                                required>
+                            <input id="emailRgistar" type="email" placeholder="מייל" required>
                         </div>
                         <div class="w-100 center-all mt-1">
-                            <input id="emailAgainRgistar" type="email" placeholder="אימות מייל"
-                                required>
+                            <input id="emailAgainRgistar" type="email" placeholder="אימות מייל" required>
                         </div>
                         <div class="w-100 center-all mt-1">
                             <button type="submit">שלח</button>
@@ -266,45 +264,49 @@
                 </p>
             </div>
         </div>
+        <button class="add-button">Add to home screen</button>
     </div>
     <script src="dragdroptouch-master/DragDropTouch.js"></script>
     <script>
-    if('serviceWorker' in navigator) {
-  navigator.serviceWorker
-           .register('sw.js')
-           .then(function() { console.log('Service Worker Registered'); });
-}
-
-// Code to handle install prompt on desktop
-
-let deferredPrompt;
-const addBtn = document.querySelector('.add-button');
-addBtn.style.display = 'none';
-
-window.addEventListener('beforeinstallprompt', (e) => {
-  // Prevent Chrome 67 and earlier from automatically showing the prompt
-  e.preventDefault();
-  // Stash the event so it can be triggered later.
-  deferredPrompt = e;
-  // Update UI to notify the user they can add to home screen
-  addBtn.style.display = 'block';
-
-  addBtn.addEventListener('click', (e) => {
-    // hide our user interface that shows our A2HS button
-    addBtn.style.display = 'none';
-    // Show the prompt
-    deferredPrompt.prompt();
-    // Wait for the user to respond to the prompt
-    deferredPrompt.userChoice.then((choiceResult) => {
-        if (choiceResult.outcome === 'accepted') {
-          console.log('User accepted the A2HS prompt');
-        } else {
-          console.log('User dismissed the A2HS prompt');
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker
+                .register('sw.js')
+                .then(function () {
+                    console.log('Service Worker Registered');
+                });
         }
-        deferredPrompt = null;
-      });
-  });
-});</script>
+
+        // Code to handle install prompt on desktop
+
+        let deferredPrompt;
+        const addBtn = document.querySelector('.add-button');
+        addBtn.style.display = 'none';
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            // Prevent Chrome 67 and earlier from automatically showing the prompt
+            e.preventDefault();
+            // Stash the event so it can be triggered later.
+            deferredPrompt = e;
+            // Update UI to notify the user they can add to home screen
+            addBtn.style.display = 'block';
+
+            addBtn.addEventListener('click', (e) => {
+                // hide our user interface that shows our A2HS button
+                addBtn.style.display = 'none';
+                // Show the prompt
+                deferredPrompt.prompt();
+                // Wait for the user to respond to the prompt
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('User accepted the A2HS prompt');
+                    } else {
+                        console.log('User dismissed the A2HS prompt');
+                    }
+                    deferredPrompt = null;
+                });
+            });
+        });
+    </script>
     <script src="js/script.js"></script>
 </body>
 
