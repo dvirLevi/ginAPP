@@ -159,7 +159,7 @@ const sendMail = {
     }
 
 }
-cron.schedule("40 5 * * *", async ()=> {
+cron.schedule("40 4 * * *", async ()=> {
     sendMail.findUsersDalyMile()
   });
 
