@@ -536,12 +536,6 @@ input[type="file"] {
     display: none;
 }
 
-.add-button {
-    position: absolute;
-    top: 1px;
-    left: 1px;
-  }
-
 @media (max-width: 767.98px) {
 
     html,
