@@ -511,7 +511,7 @@ const tasks = {
                 typeTask[x].style.display = 'block';
             }
         }
-        this.heightFullScreen()
+        // this.heightFullScreen()
     },
     heightFullScreen() {
         const heightToBottom = document.getElementById('heightToBottom');
@@ -525,6 +525,7 @@ const tasks = {
         return HScreen - HAlready;
     }
 }
+tasks.heightFullScreen()
 
 
 const registar = {
