@@ -64,6 +64,18 @@ a {
     border-radius: 3px;
 }
 
+.menu-open p{
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    font-size: 15px;
+    border-bottom: solid rgb(107, 107, 107) 1px;
+}
+
+.menu-open p:nth-last-child(){
+   border-bottom: none;
+}
+
 .hamburger {
     width: 35px;
 }
