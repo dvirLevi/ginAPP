@@ -7,7 +7,17 @@ self.addEventListener('install', function(e) {
        'js/script.js',
        'css/style.css',
        'css/bootstrap.min.css',
+       'compressor/compressor.min.js',
+       'dragdroptouch-master/DragDropTouch.js',
        'img/asset1.png',
+       'img/bucket.png',
+       'img/calendar.png',
+       'img/male.png',
+       'img/plant.png',
+       'img/scissors.png',
+       'img/sprout.png',
+       'img/watering-can.png',
+
       //  '/pwa-examples/a2hs/images/fox2.jpg',
       //  '/pwa-examples/a2hs/images/fox3.jpg',
       //  '/pwa-examples/a2hs/images/fox4.jpg'
