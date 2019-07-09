@@ -17,10 +17,6 @@ self.addEventListener('install', function(e) {
        'img/scissors.png',
        'img/sprout.png',
        'img/watering-can.png',
-
-      //  '/pwa-examples/a2hs/images/fox2.jpg',
-      //  '/pwa-examples/a2hs/images/fox3.jpg',
-      //  '/pwa-examples/a2hs/images/fox4.jpg'
      ]);
    })
  );
