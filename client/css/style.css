@@ -85,7 +85,7 @@ a {
 .hamburger div {
     width: 35px;
     height: 5px;
-    background-color: black;
+    background-color: rgb(0, 0, 0);
     margin: 6px 0;
 }
 
@@ -113,7 +113,7 @@ a {
     box-shadow: 2px 2px 20px #bbbbbb;
     font-weight: bold;
     font-size: 23px;
-    /* width: 36%; */
+    width: 52%;
     text-align: center
 }
 

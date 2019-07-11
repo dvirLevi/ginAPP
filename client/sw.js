@@ -1,11 +1,13 @@
+// const version = "?0_1" 
+
 self.addEventListener('install', function(e) {
  e.waitUntil(
-   caches.open('video-store').then(function(cache) {
+   caches.open('gin-app').then(function(cache) {
      return cache.addAll([
        '/',
-       'index.html',
-       'js/script.js',
-       'css/style.css',
+      //  'index.html'+version,
+      //  'js/script.js'+version,
+      //  'css/style.css'+version,
        'css/bootstrap.min.css',
        'compressor/compressor.min.js',
        'dragdroptouch-master/DragDropTouch.js',
