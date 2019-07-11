@@ -11,6 +11,6 @@
   ],
   "name": "gin app",
   "short_name": "גינה-לי",
-  "start_url": "/"
-  // "start_url": "index.html"
+  // "start_url": "/"
+  "start_url": "index.html"
 }

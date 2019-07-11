@@ -37,6 +37,8 @@ const arrowL = document.getElementById('arrowL');
 const arrowR = document.getElementById('arrowR');
 const ifSendMail = document.getElementById('ifSendMail');
 const selectionSendMail = document.getElementById('selectionSendMail');
+const myTasks = document.getElementById('myTasks');
+const coffee = document.getElementById('coffee');
 
 
 
@@ -509,13 +511,14 @@ const tasks = {
             if (!typeTask[x].lastElementChild.innerHTML) {
                 typeTask[x].style.display = 'none';
                 testIfAllEmpty++;
-                if(testIfAllEmpty == 4){
-                    myTasks.innerHTML = `<div class="if-coffee w-100 center-all">
+                if (testIfAllEmpty == 4) {
+                    coffee.innerHTML = `<div class="if-coffee w-100 center-all">
                                             <img src="img/coffee.png">
                                             <p>אין לך משימות היום.</p>
                                          </div>`
                 }
             } else {
+                coffee.innerHTML = "";
                 typeTask[x].style.display = 'block';
             }
         }
