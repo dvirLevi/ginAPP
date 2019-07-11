@@ -17,6 +17,8 @@ self.addEventListener('install', function(e) {
        'img/scissors.png',
        'img/sprout.png',
        'img/watering-can.png',
+       'img/coffee.png',
+
      ]);
    })
  );

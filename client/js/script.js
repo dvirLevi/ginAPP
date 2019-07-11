@@ -504,9 +504,17 @@ const tasks = {
     },
     clearEmpty() {
         const typeTask = document.querySelectorAll('.type-Task');
+        let testIfAllEmpty = 0;
         for (let x = 0; x < 4; x++) {
             if (!typeTask[x].lastElementChild.innerHTML) {
                 typeTask[x].style.display = 'none';
+                testIfAllEmpty++;
+                if(testIfAllEmpty == 4){
+                    myTasks.innerHTML = `<div class="if-coffee w-100 center-all">
+                                            <img src="img/coffee.png">
+                                            <p>אין לך משימות היום.</p>
+                                         </div>`
+                }
             } else {
                 typeTask[x].style.display = 'block';
             }

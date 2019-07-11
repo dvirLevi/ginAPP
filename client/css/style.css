@@ -101,8 +101,8 @@ a {
     height: 5px;
     background-color: #000000;
     margin: 4px 24%;
-    border-radius: 2px;
-    box-shadow: 0 0 3px 0px white;
+    /* border-radius: 2px; */
+    box-shadow: 0 0 5px 0px white;
     pointer-events: none;
 }
 
@@ -129,8 +129,8 @@ a {
     width: 24px;
     height: 24px;
     z-index: 5;
-    right: 0;
-    top: 0;
+    right: 20px;
+    top: 4px;
     text-align: center;
     background-color: #ea5840;
     border-radius: 6px;
@@ -239,6 +239,20 @@ input[type="file"] {
     min-height: 55px
 }
 
+.if-coffee p{
+    margin: 0;
+    width: 49%;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: right;
+}
+
+.if-coffee img{
+    margin: 5px;
+    width: 15%;
+    text-align: right;
+}
+
 .wrap-my-tasks h5 {
     width: 60%;
     text-align: center;
@@ -337,7 +351,7 @@ input[type="file"] {
 
 .modal-m {
     position: fixed;
-    z-index: 1;
+    z-index: 2;
     display: flex;
     align-items: center;
     justify-content: center;
