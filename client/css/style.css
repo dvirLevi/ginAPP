@@ -26,6 +26,9 @@ a {
 
 .container {
     color: #422927;
+    background-image: url('../img/bac.png');
+    background-position: center;
+    background-size: cover;
 }
 
 .massege p {
