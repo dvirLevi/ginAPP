@@ -111,8 +111,8 @@ a {
 
 .hello-usermame img {
     width: 20%;
-    padding: 1%;
-    margin: 1%;
+    padding: 5px;
+    margin: 5px;
     border: solid rgb(136, 136, 136) 1px;
 }
 
@@ -276,6 +276,7 @@ input[type="file"] {
     flex: 1;
     border-left: solid #ffffff 1px;
 }
+
 
 .type-Task:nth-child(4) {
     border-left: none;
