@@ -109,6 +109,13 @@ a {
     pointer-events: none;
 }
 
+.hello-usermame img {
+    width: 20%;
+    padding: 1%;
+    margin: 1%;
+    border: solid rgb(136, 136, 136) 1px;
+}
+
 .butt-add-plant {
     background-color: #bbda6a;
     padding: 2% 5%;
@@ -225,12 +232,12 @@ input[type="file"] {
 
 .wrap-my-tasks {
     background-color: #ffaf9f;
-    border-radius: 9px;
+    /* border-radius: 9px; */
 }
 
 .bacg-transp {
     background-color: rgba(0, 0, 0, 0.082);
-    border-radius: 6px 6px 0px 0px;
+    /* border-radius: 6px 6px 0px 0px; */
 }
 
 .title-my-tasks img {
@@ -291,7 +298,7 @@ input[type="file"] {
 
 .wrap-my-plants {
     background-color: #e1ff95;
-    border-radius: 9px;
+    /* border-radius: 9px; */
 }
 
 .title-my-plants img {
