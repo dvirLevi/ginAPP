@@ -10,6 +10,10 @@ body {
     /* height: 753.1px; */
     margin: 0 auto;
     border: solid #e8e8e8 1px;
+    background-image: url('../img/bac.png');
+    background-position: center;
+    background-size: contain;
+    background-position: top;
 }
 
 a {
@@ -26,9 +30,7 @@ a {
 
 .container {
     color: #7d3535;;
-    background-image: url('../img/bac.png');
-    background-position: center;
-    background-size: cover;
+    
 }
 
 .massege p {
