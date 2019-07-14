@@ -25,7 +25,7 @@ a {
 }
 
 .container {
-    color: #422927;
+    color: #7d3535;;
     background-image: url('../img/bac.png');
     background-position: center;
     background-size: cover;
@@ -111,7 +111,7 @@ a {
 
 .hello-usermame img {
     width: 15%;
-    padding: 5px;
+    padding: 2px;
     margin: 10px;
     border: solid rgb(136, 136, 136) 1px;
 }
@@ -240,9 +240,15 @@ input[type="file"] {
     /* border-radius: 6px 6px 0px 0px; */
 }
 
+.title-my-tasks{
+    position: relative;
+}
+
 .title-my-tasks img {
-    width: 10%;
+    width: 15%;
     padding: 1%;
+    position: absolute;
+    right: 0;
 }
 
 .my-Tasks {
@@ -253,7 +259,6 @@ input[type="file"] {
     margin: 0;
     width: 49%;
     font-size: 20px;
-    font-weight: bold;
     text-align: right;
     color:#f17258;
 }
@@ -303,7 +308,7 @@ input[type="file"] {
 }
 
 .title-my-plants img {
-    width: 11%;
+    width: 14%;
     padding: 1%;
 }
 
