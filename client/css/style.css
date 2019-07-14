@@ -295,6 +295,7 @@ input[type="file"] {
     border-bottom: solid #fdfaeb 1px;
     font-weight: bold;
     color: #fdfaeb;
+    font-size: 20px;
 }
 
 .type-Task div {
