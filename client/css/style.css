@@ -286,9 +286,9 @@ input[type="file"] {
 }
 
 
-.type-Task:nth-child(4) {
+/* .type-Task:nth-child(4) {
     border-left: none;
-}
+} */
 
 .type-Task p {
     text-align: center;

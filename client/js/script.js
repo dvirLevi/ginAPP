@@ -507,6 +507,7 @@ const tasks = {
     clearEmpty() {
         const typeTask = document.querySelectorAll('.type-Task');
         let testIfAllEmpty = 0;
+        let cleanLine = 0;
         for (let x = 0; x < 4; x++) {
             if (!typeTask[x].lastElementChild.innerHTML) {
                 typeTask[x].style.display = 'none';
@@ -520,8 +521,12 @@ const tasks = {
             } else {
                 coffee.innerHTML = "";
                 typeTask[x].style.display = 'block';
+                typeTask[x].style.borderLeft = 'solid #ffffff 1px';
+                cleanLine = x;
             }
         }
+        
+        typeTask[cleanLine].style.borderLeft = 'none';
         this.heightFullScreen()
     },
     heightFullScreen() {
