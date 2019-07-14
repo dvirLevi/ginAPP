@@ -112,7 +112,7 @@ const sendMail = {
         return [year, month, day].join('-');
     },
     get day() {
-        return new Date().getDay() + 1;
+        return new Date().getDay();
     },
     async findUsersDalyMile(){
         let arrUsersSendMail = await collection.find({ifMailNot: true}).toArray();
