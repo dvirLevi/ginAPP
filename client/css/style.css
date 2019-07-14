@@ -234,6 +234,7 @@ input[type="file"] {
 
 .wrap-my-tasks {
     background-color: #ffaf9f;
+    box-shadow: 0px 0px 7px 1px #bfbfbf;
     /* border-radius: 9px; */
 }
 
@@ -306,6 +307,7 @@ input[type="file"] {
 
 .wrap-my-plants {
     background-color: #e1ff95;
+    box-shadow: 0px 0px 7px 1px #bfbfbf;
     /* border-radius: 9px; */
 }
 
