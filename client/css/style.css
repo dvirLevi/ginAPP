@@ -135,7 +135,7 @@ margin-bottom: -38px;
 
 .edit-plants {
     background-color: #66423f40;
-    border-radius: 13px;
+    /* border-radius: 13px; */
     position: relative;
     /* min-height: 110px; */
 }
