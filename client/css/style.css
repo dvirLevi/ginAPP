@@ -129,6 +129,10 @@ a {
     text-align: center
 }
 
+.col-add-plant {
+margin-bottom: -38px;
+}
+
 .edit-plants {
     background-color: #66423f40;
     border-radius: 13px;
@@ -151,19 +155,36 @@ a {
 
 .boxPlant {
     width: 110px;
-    height: 110px;
+    height: 137px;
     background-color: #ffffff94;
     background-image: url(../img/asset1.png);
     opacity: 0.8;
     background-size: cover;
     margin: 10px;
-    border-radius: 6px;
+    /* border-radius: 6px; */
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
     position: sticky;
     box-shadow: 0 0 8px 0px #717171cf;
+}
+
+.boxPlantUpload {
+    width: 100px;
+    height: 100px;
+    background-color: #ffffff94;
+    background-image: url(../img/asset1.png);
+    opacity: 0.8;
+    background-size: cover;
+    margin: 10px;
+    /* border-radius: 6px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: sticky;
+    box-shadow: 0 0 8px 0px #717171cf; 
 }
 
 .notification .wrap-selection {
@@ -354,7 +375,7 @@ input[type="file"] {
 
 .my-plants {
     max-height: 364px;
-    min-height: 140px;
+    min-height: 166px;
 }
 
 .contact p {

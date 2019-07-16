@@ -100,7 +100,7 @@ const createPlants = {
         if (file.type == 'image/jpeg') {
             let reader = new FileReader();
             new Compressor(file, {
-                width: 150,
+                width: 200,
                 quality: 0.6,
                 success(result) {
                     let timyImg = result;
@@ -183,10 +183,10 @@ class BoxPlant {
     }
     createBox() {
         let box = document.createElement('div');
-        box.className = 'boxPlant';
         box.setAttribute('id', this.id);
 
         if (this.img == "") {
+            box.className = 'boxPlantUpload';
             let buttAddImg = document.createElement('input');
             buttAddImg.className = 'butt-add-img';
             buttAddImg.setAttribute('type', 'file');
@@ -213,6 +213,7 @@ class BoxPlant {
             editPlants.appendChild(close);
             editPlants.appendChild(box);
         } else {
+            box.className = 'boxPlant';
             let img = document.createElement('img');
             img.src = this.img;
             img.setAttribute("draggable", "false");
@@ -236,7 +237,7 @@ class BoxPlant {
                 if (e.target.tagName == "IMG") {
                     e.target.parentElement.style.boxShadow = "0 0 19px 0px #717171cf";
                     e.target.parentElement.style.width = '115px';
-                    e.target.parentElement.style.height = '115px';
+                    e.target.parentElement.style.height = '142px';
                 }
                 let id = e.target.parentElement.id;
                 dragAndDrop.findIdElementDrop(id)
@@ -246,7 +247,7 @@ class BoxPlant {
                 if (e.target.tagName == "IMG") {
                     e.target.parentElement.style.boxShadow = "0 0 8px 0px #717171cf";
                     e.target.parentElement.style.width = '110px';
-                    e.target.parentElement.style.height = '110px';
+                    e.target.parentElement.style.height = '137px';
                 }
             }
             box.ondrop = (e) => {
